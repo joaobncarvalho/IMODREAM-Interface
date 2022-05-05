@@ -15,7 +15,7 @@ $(document).ready(
                 for(var i in obj)
                     res.push(obj[i]);
 
-                down.innerHTML =  res;
+              //  down.innerHTML =  ;
                 {
 
                 }
