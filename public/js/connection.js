@@ -12,6 +12,7 @@ $(document).ready(
                 var down = document.getElementById("Moradia_Tipo");
                 var res = [""];
                 var obj = JSON.stringify(result);
+                console.log(obj);
                 for(var i in obj)
                     res.push(obj[i]);
 
