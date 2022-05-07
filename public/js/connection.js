@@ -319,7 +319,6 @@ $(document).ready(
 
                 for(var i in result) {
                     res.push(obj[i]);
-                    //down.innerHTML = obj[i];
                     let h23 = document.createElement("h");
                     h23.innerText = result[i].Price;
                     down.appendChild(h23);
