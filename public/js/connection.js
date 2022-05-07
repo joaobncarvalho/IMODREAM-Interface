@@ -15,7 +15,6 @@ $(document).ready(
 
                 for(var i in result) {
                     res.push(obj[i]);
-                    //down.innerHTML = obj[i];
                     let h2 = document.createElement("p");
                     h2.innerText = result[i].Dimension + " - " + result[i].Measurments;
                     down.appendChild(h2);
