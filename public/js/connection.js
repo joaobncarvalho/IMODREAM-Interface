@@ -41,7 +41,6 @@ $(document).ready(
 
             for(var i in result) {
                 res.push(obj[i]);
-                //down.innerHTML = obj[i];
                 let h12 = document.createElement("i");
                 h12.innerText = result[i].StreetName;
                 down.appendChild(h12);
