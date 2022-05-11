@@ -1,37 +1,66 @@
-function initMap() {
+let lat
+let long
+
+function initMap(lat,long) {
+
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
-        center: { lat: -33, lng: 151 },
+        center: { lat: lat, lng: long },
     });
+
+
     const image =
         "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
     const beachMarker = new google.maps.Marker({
-        position: { lat: -33.89, lng: 151.274 },
+        position: { lat: lat, lng: long },
         map,
         icon: image,
     });
 }
 
+
+
+
 window.initMap = initMap;
 
-function Loc(){
-    $.ajax({
-        url: "https://imodream-api.herokuapp.com/api/proprety/one",
-        type: "GET",
-        dataType: 'json',
-        success: function(result) {
-            console.log(result);
-        }
-    });
-}
 
-const json =  {
-    name:"leo",
-    location: [
-        10,
-        30.1273,
-        40
-    ]
-}
 
-console.log(json.location[1])
+//$(document).ready(
+
+     function MarkersLoc(){
+         $.ajax({
+            url: "https://imodream-api.herokuapp.com/api/proprety",
+            type: "GET",
+            dataType: 'json',
+            success: function(result) {
+                //console.log(result);
+                $('#DimensionPro').text(result)
+                var down = document.getElementById("map");
+                //console.log(obj);
+
+                var res = [""];
+
+                for (var i=0; i < result.length-1;i++){
+                    //console.log(result[i].location)
+                    lat = result[i].location.coordinates[0]
+                    long = result[i].location.coordinates[1]
+
+                    initMap(lat,long);
+
+                }
+
+
+            }
+
+        })
+    }
+
+
+
+
+
+
+
+//);
+
+
