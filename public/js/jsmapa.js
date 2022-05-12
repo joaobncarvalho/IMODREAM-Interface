@@ -5,7 +5,7 @@ function initMap(lat,long) {
 
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
-        center: { lat: lat, lng: long },
+        center: { lat: 38.71196425733478, lng:-9.21110677356596 },
     });
     console.log(lat,long)
     $.ajax({
@@ -19,14 +19,22 @@ function initMap(lat,long) {
             //console.log(obj);
 
             var res = [""];
+            var marker
+            const infowindow = new google.maps.InfoWindow()
 
-            for (var i=0; i < result.length-1;i++){
-                //console.log(result[i].location)
-                lat = result[i].location.coordinates[0]
-                long = result[i].location.coordinates[1]
+            for (var i = 0; i < result.length-1; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(result[i].location.coordinates[0], result[i].location.coordinates[1]),
+                    map: map
+                });
 
-                initMap(lat,long);
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent("Rua: " + result[i].StreetName + "<br>Preço: " + result[i].Price  + "<br>Tipo de Propriedade: "+  result[i].PropretyType);
 
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
             }
 
 
