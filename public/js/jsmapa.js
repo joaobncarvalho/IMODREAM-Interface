@@ -22,15 +22,16 @@ function initMap(lat,long) {
             var marker
             const infowindow = new google.maps.InfoWindow()
 
-            for (var i = 0; i < result.length-1; i++) {
+            for (var i = 0; i < result.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(result[i].location.coordinates[0], result[i].location.coordinates[1]),
                     map: map
                 });
 
+                marker.setIcon('./img/Imo/houseicon.png')
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        infowindow.setContent("Rua: " + result[i].StreetName + "<br>Preço: " + result[i].Price  + "<br>Tipo de Propriedade: "+  result[i].PropretyType);
+                        infowindow.setContent("Rua: " + result[i].StreetName + "<br>Preço: " + result[i].Price  + "<br>Tipo de Propriedade: "+  result[i].PropretyType + "<br>Medidas: "+  result[i].Measurments +" - "+ result[i].Dimension);
 
                         infowindow.open(map, marker);
                     }
@@ -41,13 +42,7 @@ function initMap(lat,long) {
         }
 
     })
-    const image =
-        "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-    const beachMarker = new google.maps.LatLng({
-        position: { lat: lat, lng: long },
-        map,
-        icon: image,
-    });
+
 }
 
 
