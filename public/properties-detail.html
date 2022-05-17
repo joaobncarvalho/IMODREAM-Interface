@@ -185,11 +185,40 @@
                </ul>
                <h4>Property Video</h4>
                <iframe width="560" height="315" src="https://www.youtube.com/embed/s8ucXNArjps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
                <h4>Property Map</h4>
 
-               <div id="map" style="width: 77.5%;height: 400px;position: relative"></div>
-
                <script type="module" src="./js/jsmapa.js"></script>
+
+               <div id="map" style="width: 77.5%;height: 400px;position: relative">
+
+                 <div  style="position: absolute; top:220px; width:500px; left:397px ">
+                   <div style="padding: 1px 30px 1px 1px;">
+                     <p style="font-weight: bold;font-size:medium">- Método de Transporte: </p>
+
+                   </div>
+                 </div>
+
+
+               </div>
+               <button onclick="calculateAndDisplayRoute()" id="btn"></button>
+
+               <div style="padding: 1px 30px 1px 1px;">
+                 <p style="font-weight: bold;font-size:medium">- Método de Transporte: </p>
+                 <select id="mode" style="position: absolute;" class="col-md-4">
+                   <option value="DRIVING">Condução</option>
+                   <option value="WALKING">Caminhar</option>
+                   <option value="BICYCLING">Bicicleta</option>
+                   <option value="TRANSIT">Trasportes</option>
+                 </select>
+               </div>
+
+
+
+
+
 
                <script
                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3aOUkGciA-jbx5MeTDD7-UtACABQUG0&callback=initMap&v=weekly"

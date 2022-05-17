@@ -334,7 +334,7 @@ $(document).ready(
 
 $(document).ready(
 
-    function teste(){
+    function house1(){
 
         $.ajax({
             url: "https://imodream-api.herokuapp.com/api/proprety/one",
@@ -344,7 +344,7 @@ $(document).ready(
 
                 console.log("="+result);
                 $('#DimensionPro').text(result)
-                let teste = document.querySelector("#teste")
+                let teste = document.querySelector("#house1")
                 let html = ""
 
                 for (let i in result) {
