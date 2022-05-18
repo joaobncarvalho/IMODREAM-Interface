@@ -67,7 +67,7 @@ function initMap(lat,long) {
         infoWindow.open(map);
     }
 
-    async function getEventos() {
+    async function getPropreties() {
         const response = await fetch (propretiesUrl);
         const propreties = await response.json();
         console.log(propreties);
@@ -87,7 +87,7 @@ function initMap(lat,long) {
         }
     }
 
-    getEventos();
+    getPropreties();
 
 }
 
@@ -100,7 +100,7 @@ function initMap(lat,long) {
 
 
 
-    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    async function calculateAndDisplayRoute(directionsService, directionsRenderer) {
         const selectedMode = document.getElementById("mode").value
 
         if (navigator.geolocation) {
@@ -118,11 +118,15 @@ function initMap(lat,long) {
         }
 
         console.log(pos)
+        const propretiesUrl = 'https://imodream-api.herokuapp.com/api/proprety/one'
+        const response = await fetch (propretiesUrl);
+        const propreties = await response.json();
+        console.log(propreties)
 
         directionsService
             .route({
                 origin: pos,
-                destination: pos1,
+                destination: new google.maps.LatLng(propreties[0].location.coordinates[0], propreties[0].location.coordinates[1]),
 
                 travelMode: google.maps.TravelMode[selectedMode],
 
