@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(
 
     function proprety1(){
@@ -14,7 +17,19 @@ $(document).ready(
 
                 for (let i in result) {
                     let h2 = result[i].PropretyType + " - " + result[i].AreaName
-                    html += `<div className="aa-properties-info"><span>${result[i].Dimension}</span><span>${result[i].Measurments}</span></div><div className="aa-properties-about"><h3><a href="#">${h2}</a></h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam oditvitae.</p></div><div className="aa-properties-detial"><span className="aa-price">${result[i].Price}</span><a className="aa-secondary-btn" href="#">Ver Detalhes</a></div></div>`
+                    let h3 = result[i].Dimension + " - " + result[i].Measurments
+                    html += `<div class="aa-properties-info">
+                    <span>${h3}</span> 
+                    </div>
+                    <div class="aa-properties-about">
+                    <h3><a href="#">${h2}</a></h3>
+                    <p>Apartamento nas torres do restelo, bem situado e zona pouco movimentada.</p>
+                    </div>
+                    <div class="aa-properties-detial">
+                    <span className="aa-price">${result[i].Price}
+                    </span>
+                    <a class="aa-secondary-btn" href="./properties-detail.html">Ver Detalhes</a>
+                    </div>`
 
                 }
                 console.log("aaaaa"+html)
