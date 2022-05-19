@@ -265,3 +265,111 @@ $(document).ready(
 );
 
 
+$(document).ready(
+
+    function propretyside1(){
+        $.ajax({
+            url: "https://imodream-api.herokuapp.com/api/proprety/7",
+            type: "GET",
+            dataType: 'json',
+            success: function(result) {
+
+                console.log("="+result);
+                $('#DimensionPro').text(result)
+                let teste = document.querySelector("#proside1")
+                let html = ""
+
+                for (let i in result) {
+                    let h2 = result[i].PropretyType + " - " + result[i].StreetName
+                    let h3 = result[i].Dimension + " - " + result[i].Measurments
+                    html += `
+                    <h4 class="media-heading"><a onclick="goInfo(${result[i].PropId})">${h2}</a></h4>
+                  <p>${h3}</p>                
+                  <span>${result[i].Price}</span>
+                </div>              
+              </div>`
+
+                }
+                console.log("aaaaa"+html)
+
+                teste.innerHTML=html
+            }
+
+        });
+    }
+
+);
+
+
+$(document).ready(
+
+    function propretyside2(){
+        $.ajax({
+            url: "https://imodream-api.herokuapp.com/api/proprety/8",
+            type: "GET",
+            dataType: 'json',
+            success: function(result) {
+
+                console.log("="+result);
+                $('#DimensionPro').text(result)
+                let teste = document.querySelector("#proside2")
+                let html = ""
+
+                for (let i in result) {
+                    let h2 = result[i].PropretyType + " - " + result[i].StreetName
+                    let h3 = result[i].Dimension + " - " + result[i].Measurments
+                    html += `
+                    <h4 class="media-heading"><a onclick="goInfo(${result[i].PropId})">${h2}</a></h4>
+                  <p>${h3}</p>                
+                  <span>${result[i].Price}</span>
+                </div>              
+              </div>`
+
+                }
+                console.log("aaaaa"+html)
+
+                teste.innerHTML=html
+            }
+
+        });
+    }
+
+);
+
+
+$(document).ready(
+
+    function propretyside2(){
+        $.ajax({
+            url: "https://imodream-api.herokuapp.com/api/proprety/9",
+            type: "GET",
+            dataType: 'json',
+            success: function(result) {
+
+                console.log("="+result);
+                $('#DimensionPro').text(result)
+                let teste = document.querySelector("#proside3")
+                let html = ""
+
+                for (let i in result) {
+                    let h2 = result[i].PropretyType + " - " + result[i].StreetName
+                    let h3 = result[i].Dimension + " - " + result[i].Measurments
+                    html += `
+                    <h4 class="media-heading"><a onclick="goInfo(${result[i].PropId})">${h2}</a></h4>
+                  <p>${h3}</p>                
+                  <span>${result[i].Price}</span>
+                </div>              
+              </div>`
+
+                }
+                console.log("aaaaa"+html)
+
+                teste.innerHTML=html
+            }
+
+        });
+    }
+
+);
+
+
