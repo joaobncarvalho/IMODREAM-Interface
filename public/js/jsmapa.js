@@ -1,4 +1,12 @@
 let marker, infoWindow, map;
+let id = localStorage.getItem("pro_id")
+
+
+
+window.onload = function() {
+    alert(id)
+};
+
 
 
 function initMap(lat,long) {
@@ -7,7 +15,7 @@ function initMap(lat,long) {
     const directionsService = new google.maps.DirectionsService();
     const imagem = "./img/Imo/houseicon.png"
     const infowindow = new google.maps.InfoWindow();
-    const propretiesUrl = 'https://imodream-api.herokuapp.com/api/proprety/one'
+    const propretiesUrl = 'https://imodream-api.herokuapp.com/api/proprety/'+id
     const map = new google.maps.Map(document.getElementById("map"), {
 
         zoom: 13,
@@ -118,7 +126,7 @@ function initMap(lat,long) {
         }
 
         console.log(pos)
-        const propretiesUrl = 'https://imodream-api.herokuapp.com/api/proprety/one'
+        const propretiesUrl = 'https://imodream-api.herokuapp.com/api/proprety/'+id
         const response = await fetch (propretiesUrl);
         const propreties = await response.json();
         console.log(propreties)
@@ -141,6 +149,35 @@ function initMap(lat,long) {
 
 
 window.initMap = initMap;
+
+$(document).ready(
+
+    function proprety1(){
+        $.ajax({
+            url: 'https://imodream-api.herokuapp.com/api/proprety/'+id,
+            type: "GET",
+            dataType: 'json',
+            success: function(result) {
+
+                console.log("sagatsftsa"+result);
+                $('#DimensionPro').text(result)
+                let teste = document.querySelector("#proprety1")
+                let html = ""
+                for (let i in result) {
+                    let h2 = result[i].PropretyType + " - " + result[i].AreaName
+                    let h3 = result[i].Dimension + " - " + result[i].Measurments
+                    html += `<h2>${h2}</h2><span class="aa-price">${result[i].Price}</span>`
+
+                }
+                console.log("aaaaa"+html)
+
+                teste.innerHTML=html
+            }
+
+        });
+    }
+
+);
 
 
 //);

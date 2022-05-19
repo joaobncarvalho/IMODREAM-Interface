@@ -1,4 +1,8 @@
 let map, infoWindow, marker;
+let id = localStorage.getItem("pro_id")
+
+
+
 
 function initMap() {
     const directionsRenderer = new google.maps.DirectionsRenderer();

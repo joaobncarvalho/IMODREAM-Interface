@@ -1,11 +1,15 @@
 
-
+function goInfo(id) {
+    alert(id)
+    localStorage.setItem("pro_id", id)
+    window.location.href = "./properties-detail.html"
+}
 
 $(document).ready(
 
     function proprety1(){
         $.ajax({
-            url: "https://imodream-api.herokuapp.com/api/proprety/one",
+            url: "https://imodream-api.herokuapp.com/api/proprety",
             type: "GET",
             dataType: 'json',
             success: function(result) {
@@ -28,11 +32,12 @@ $(document).ready(
                     <div class="aa-properties-detial">
                     <span className="aa-price">${result[i].Price}
                     </span>
-                    <a class="aa-secondary-btn" href="./properties-detail.html">Ver Detalhes</a>
+                    <a class="aa-secondary-btn" onclick="goInfo(${result[i].PropId})">Ver Detalhes</a>
                     </div>`
 
                 }
                 console.log("aaaaa"+html)
+
                 teste.innerHTML=html
             }
 
