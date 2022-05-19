@@ -3,9 +3,7 @@ let id = localStorage.getItem("pro_id")
 
 
 
-window.onload = function() {
-    alert(id)
-};
+
 
 
 
@@ -164,7 +162,7 @@ $(document).ready(
                 let teste = document.querySelector("#proprety1")
                 let html = ""
                 for (let i in result) {
-                    let h2 = result[i].PropretyType + " - " + result[i].AreaName
+                    let h2 = result[i].PropretyType + " - " + result[i].StreetName
                     let h3 = result[i].Dimension + " - " + result[i].Measurments
                     html += `<h2>${h2}</h2><span class="aa-price">${result[i].Price}</span>`
 
