@@ -19,7 +19,7 @@ $(document).ready(
 
                 for (let i in result) {
                     let h2 = result[i].Dimension + " - " + result[i].Measurments
-                    html += ` 
+                    html += ` <br>
                          <h2>${result[i].Name}</h2>
                           <div class="aa-blog-single-bottom">
                             <a class="aa-blog-author" href="#"><i class="fa fa-user"></i> Admin</a>
