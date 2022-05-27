@@ -8,7 +8,7 @@ $(document).ready(
 
     function proprety1(){
         $.ajax({
-            url: "https://imodream-api.herokuapp.com/api/proprety/1",
+            url: "https://imodream-api.herokuapp.com/api/proprety",
             type: "GET",
             dataType: 'json',
             success: function(result) {
@@ -21,20 +21,36 @@ $(document).ready(
                 for (let i in result) {
                     let h2 = result[i].PropretyType + " - " + result[i].StreetName
                     let h3 = result[i].Dimension + " - " + result[i].Measurments
-                    html += `
-                    <div class="aa-properties-item-content">
-                    <div class="aa-properties-info">
-                    <span>${h3}</span> 
-                    </div>
-                    <div class="aa-properties-about">
-                    <h3><a onclick="goInfo(${result[i].PropId})">${h2}</a></h3>
-                    </div>
-                    <div class="aa-properties-detial">
-                    <span class="aa-price">${result[i].Price}
+                    html += `<ul className="aa-properties-nav">
+    <li>
+        <article class="aa-properties-item">
+            <a class="aa-properties-item-img" href="#">
+                <img alt="img" src="img/Imo/LogoPremium.png">
+            </a>
+            <div class="aa-tag for-rent">
+                For Rent
+            </div>
+            <div class="aa-properties-item-content">
+            
+            <div class="aa-properties-item-content">
+    <div class="aa-properties-info">
+        <span>${h3}</span>
+    </div>
+    <div class="aa-properties-about">
+        <h3><a onClick="goInfo(${result[i].PropId})">${h2}</a></h3>
+    </div>
+    <div class="aa-properties-detial">
+                    <span className="aa-price">${result[i].Price}
                     </span>
-                    <a class="aa-secondary-btn" onclick="goInfo(${result[i].PropId})">Ver Detalhes</a>
-                    </div>
-                    </div>`
+        <a class="aa-secondary-btn" onClick="goInfo(${result[i].PropId})">Ver Detalhes</a>
+    </div>
+</div>
+
+</div>
+        </article>
+    </li>
+    
+                    `
 
                 }
                 console.log("aaaaa"+html)
@@ -46,6 +62,11 @@ $(document).ready(
     }
 
 );
+
+
+
+
+
 
 $(document).ready(
 
