@@ -10,7 +10,7 @@ $(document).ready(
     function imo(){
 
         $.ajax({
-            url: "https://imodream-api.herokuapp.com/api/imo/1",
+            url: "https://imodream-api.herokuapp.com/api/imo/",
             type: "GET",
             dataType: 'json',
             success: function(result) {
@@ -24,12 +24,12 @@ $(document).ready(
                     let h2 = result[i].Dimension + " - " + result[i].Measurments
                     html += ` 
                         <figure class="aa-blog-img">
-                          <a href="#"><img alt="img" src="img/Imo/KWLead.jpg"></a>
+                          <a href="#"><img alt="img" src="img/Imo/LogoCommon.jpeg"></a>
                           <span class="aa-date-tag">${result[i].Criacao}</span>
                         </figure>
                         
                           <h3><a onclick="goInfo(${result[i].ImoId})">${result[i].Name}</a></h3>
-                          <p>Na KW Lead trabalhamos sempre focados para que todas as operações sejam sinónimo de vontade e não de necessidade, garantimos que só existem vencedores – proprietários, compradores, parceiros e consultores.</p>
+                          <p>Agencia Imobiliaria.</p>
                           <div class="aa-blog-single-bottom">
                             <a class="aa-blog-author" href="#"><i class="fa fa-user"></i> ${result[i].Name}</a>
                           </div>
