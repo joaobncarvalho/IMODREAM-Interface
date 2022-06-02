@@ -52,14 +52,14 @@
                 <a class="aa-property-home" href="index.html">ImoDream</a>
                 <h4>Insira as Credenciais</h4>
               </div>
-              <form class="contactform">                                                 
+              <form class="contactform" id="login">
                 <div class="aa-single-field">
                   <label for="email">Email <span class="required">*</span></label>
-                  <input type="email" required="required" aria-required="true" value="" name="email">
+                  <input type="email" id="email" required="required" aria-required="true" value="" name="email">
                 </div>
                 <div class="aa-single-field">
                   <label for="password">Password <span class="required">*</span></label>
-                  <input type="password" name="password"> 
+                  <input type="password" autocomplete="off" id="password" placeholder="Password" />
                 </div>
                 <div class="aa-single-field">
                 <label>
@@ -77,6 +77,7 @@
       </div>
     </div>
   </section>
+
   
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
