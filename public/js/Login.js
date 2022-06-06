@@ -1,28 +1,39 @@
-const form = document.getElementById('login')
-form.addEventListener('submit', login)
+$(document).ready(function() {
 
-async function login(event) {
-    event.preventDefault()
-    const username = document.getElementById('username').value
-    const password = document.getElementById('password').value
+    $('#btnLogin').on('click', function(event) {
 
-    const result = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+        // prevent form default behaviour
+        event.preventDefault();
+
+        // disabled the submit button
+        $("#btnSubmit").prop("disabled", true);
+
+        let email = document.getElementById('email').value
+        let password = document.getElementById('password').value
+
+
+        $.ajax({
+            url: 'https://imodream-api.herokuapp.com/api/users/login/'+email+'/'+password,
+        type: "GET",
+            dataType: 'json',
+            success: function(response) {
+                console.log(Object.keys(response).length)
+                if(Object.keys(response).length==0){
+                    alert("Garciou")
+                }else{
+                    alert("Login Efetuado com Relativo Sucesso!")
+                    localStorage.setItem("user", JSON.stringify(response))
+                    window.location = "https://imodashboard.herokuapp.com/pages/dashboard.html"
+                }
+
+
+
         },
-        body: JSON.stringify({
-            username,
-            password
-        })
-    }).then((res) => res.json())
+        error: function (response) {
+            alert("Garciou")
+            $("#btnSubmit").prop("disabled", false)
+        }
+    });
 
-    if (result.status === 'ok') {
-        // everythign went fine
-        console.log('Got the token: ', result.data)
-        localStorage.setItem('token', result.data)
-        alert('Success')
-    } else {
-        alert(result.error)
-    }
-}
+    });
+});
