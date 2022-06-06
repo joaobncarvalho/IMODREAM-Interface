@@ -1,30 +1,37 @@
-async function createUser() {
+$(document).ready(function() {
 
-    let res = document.getElementById("result");
+    $('#btnSubmit').on('click', function(event) {
 
-    let data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        pw: document.getElementById("pw").value,
-        morada: document.getElementById("morada").value,
-        bdate: document.getElementById("bdate").value,
-        phoneN: document.getElementById("phoneN").value
-    }
-    console.log("[UtilizadorCriado] data = " + JSON.stringify(data));
-    try {
-        let newUser = await $.ajax({
-            url: "https://imodream-api.herokuapp.com/api/users/add_users",
-            method: "post",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            dataType: "json"
+        // prevent form default behaviour
+        event.preventDefault();
+
+        // disabled the submit button
+        $("#btnSubmit").prop("disabled", true);
+
+        const formData = {
+            name: jQuery('[Name=name]').val(),
+            email: jQuery('[name=email]').val(),
+            phoneN: jQuery('[name=phoneN]').val(),
+            pw: jQuery('[name=pw]').val(),
+            morada: jQuery('[name=morada]').val(),
+            bdate: jQuery('[name=bdate]').val()
+        }; //Array
+
+        $.ajax({
+            url : "https://imodream-api.herokuapp.com/api/users/add_users",
+            type: "POST",
+            data : formData, // data in json format
+            async : false, // enable or disable async (optional, but suggested as false if you need to populate data afterwards)
+            success: function(response, textStatus, jqXHR) {
+                console.log(response);
+                localStorage.setItem("user", JSON.stringify(response))
+                window.location = "https://imodashboard.herokuapp.com/pages/dashboard.html"
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
         });
-    } catch (err) {
-        console.log(err);
-        if (err.responseJSON) {
-            res.innerHTML = err.responseJSON.msg;
-        } else {
-            res.innerHTML = "Was not able to add user";
-        }
-    }
-}
+    });
+});
