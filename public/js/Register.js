@@ -14,8 +14,9 @@ $(document).ready(function() {
             phoneN: jQuery('[name=phoneN]').val(),
             pw: jQuery('[name=pw]').val(),
             morada: jQuery('[name=morada]').val(),
-            bdate: jQuery('[name=bdate]').val()
-        }; //Array
+            bdate: jQuery('[name=bdate]').val(),
+            utype: jQuery('[name=utype]').val()
+        };
 
         $.ajax({
             url : "https://imodream-api.herokuapp.com/api/users/add_users",
